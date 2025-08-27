@@ -34,7 +34,10 @@ btnDOM.addEventListener('click', () => {
     imagesDOM.addEventListener('click', e => {
         if (e.target.classList.contains('picture')) {
             e.target.classList.toggle('zoom');
-            document.querySelector('body').style.cssText = 'z-index: 100; background-color: #4a4949a2;'
         }
     })
 })
+
+//sukurti elementa, kuris per viduri ekrano isvestu originaliso ismeros img ant kurio paspaude
+//uz nuotraukos ribu turi buti permatomas juodas fonas
+//prideti load more mygtuka ant kurio paspaudus atsirastu dar 10 nuotrauku 
