@@ -1,10 +1,10 @@
 import { accessKey } from "./accessKey.js";
 
 const btnDOM = document.querySelector('button');
+const imagesDOM = document.querySelector('.images');
 
 btnDOM.addEventListener('click', () => {
     const inputDOM = document.querySelector('input');
-    const imagesDOM = document.querySelector('.images');
 
     imagesDOM.textContent = '';
 
@@ -22,7 +22,6 @@ btnDOM.addEventListener('click', () => {
                     <img class="picture" src="${url.urls.regular}" alt="picture" />
                     <span class="desc">${url.alt_description}</span>
                 </div>`;
-                console.log(data);
             });
 
         })
@@ -31,13 +30,11 @@ btnDOM.addEventListener('click', () => {
             imagesDOM.textContent = 'No images found, try again.'
         });
 
-    imagesDOM.addEventListener('click', e => {
-        if (e.target.classList.contains('picture')) {
-            e.target.classList.toggle('zoom');
-        }
-    })
 })
 
-//sukurti elementa, kuris per viduri ekrano isvestu originaliso ismeros img ant kurio paspaude
-//uz nuotraukos ribu turi buti permatomas juodas fonas
-//prideti load more mygtuka ant kurio paspaudus atsirastu dar 10 nuotrauku 
+imagesDOM.addEventListener('click', e => {
+    if (e.target.classList.contains('picture')) {
+        e.target.classList.toggle('zoom');
+        document.querySelector('.overlay').classList.toggle('active');
+    }
+})
