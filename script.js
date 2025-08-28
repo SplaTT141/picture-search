@@ -2,13 +2,14 @@ import { accessKey } from "./accessKey.js";
 
 const btnDOM = document.querySelector('button');
 const imagesDOM = document.querySelector('.images');
+const showMoreBtnDOM = document.querySelector('.show-more');
 
 btnDOM.addEventListener('click', () => {
     const inputDOM = document.querySelector('input');
 
     imagesDOM.textContent = '';
 
-    fetch(`https://api.unsplash.com/search/photos/?query=${inputDOM.value}`, {
+    fetch(`https://api.unsplash.com/search/photos?page=5&query=${inputDOM.value}`, {
         headers: {
             Authorization: `Client-ID ${accessKey}`
         }
@@ -24,12 +25,17 @@ btnDOM.addEventListener('click', () => {
                 </div>`;
             });
 
+            showMoreBtnDOM.style.display = 'block';
         })
         .catch(err => {
             console.error(err);
             imagesDOM.textContent = 'No images found, try again.'
         });
 
+})
+
+showMoreBtnDOM.addEventListener('click', () => {
+    fetch('')
 })
 
 imagesDOM.addEventListener('click', e => {
