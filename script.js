@@ -17,10 +17,10 @@ function renderImages() {
 
             data.results.forEach(url => {
                 imagesDOM.insertAdjacentHTML('beforeend', `
-                    <div class="image">
-                         <img class="picture" src="${url.urls.regular}" alt="picture" />
-                         <span class="desc">${url.alt_description || 'no description'}</span>
-                    </div>`);
+                        <div class="image">
+                             <img class="picture" src="${url.urls.regular}" alt="picture" />
+                             <span class="desc">${url.alt_description || 'no description'}</span>
+                        </div>`);
             });
 
             showMoreBtnDOM.style.display = 'block';
