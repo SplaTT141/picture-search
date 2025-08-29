@@ -5,9 +5,12 @@ const imagesDOM = document.querySelector('.images');
 const showMoreBtnDOM = document.querySelector('.show-more');
 const inputDOM = document.querySelector('input');
 let page = 1;
-imagesDOM.textContent = '';
 
-btnDOM.addEventListener('click', () => {
+
+function renderImages() {
+
+    // imagesDOM.innerHTML = '';
+    showMoreBtnDOM.style.display = 'none';
 
     fetch(`https://api.unsplash.com/search/photos?page=${page}&query=${inputDOM.value}`, {
         headers: {
@@ -17,11 +20,11 @@ btnDOM.addEventListener('click', () => {
         .then(res => res.json())
         .then(data => {
             data.results.forEach(url => {
-                imagesDOM.innerHTML += `
-                <div class="image">
-                    <img class="picture" src="${url.urls.regular}" alt="picture" />
-                    <span class="desc">${url.alt_description}</span>
-                </div>`;
+                imagesDOM.insertAdjacentHTML('beforeend', `
+                    <div class="image">
+                         <img class="picture" src="${url.urls.regular}" alt="picture" />
+                         <span class="desc">${url.alt_description}</span>
+                    </div>`);
             });
 
             showMoreBtnDOM.style.display = 'block';
@@ -30,31 +33,37 @@ btnDOM.addEventListener('click', () => {
             console.error(err);
             imagesDOM.textContent = 'No images found, try again.';
         });
-});
+}
 
-
+btnDOM.addEventListener('click', renderImages);
 showMoreBtnDOM.addEventListener('click', () => {
-    page++;
-    fetch(`https://api.unsplash.com/search/photos?page=${page}&query=${inputDOM.value}`, {
-        headers: {
-            Authorization: `Client-ID ${accessKey}`
-        }
-    })
-        .then(res => res.json())
-        .then(data => {
-            data.results.forEach(url => {
-                imagesDOM.innerHTML += `
-                            <div class="image">
-                                <img class="picture" src="${url.urls.regular}" alt="picture" />
-                                <span class="desc">${url.alt_description || 'no description'}</span>
-                            </div>`;
-            });
-        })
-        .catch(err => {
-            console.error(err);
-            imagesDOM.textContent = 'No images found, try again.';
-        });
-});
+    page++
+    renderImages();
+})
+
+
+// showMoreBtnDOM.addEventListener('click', () => {
+//     page++;
+//     fetch(`https://api.unsplash.com/search/photos?page=${page}&query=${inputDOM.value}`, {
+//         headers: {
+//             Authorization: `Client-ID ${accessKey}`
+//         }
+//     })
+//         .then(res => res.json())
+//         .then(data => {
+//             data.results.forEach(url => {
+//                 imagesDOM.innerHTML += `
+//                             <div class="image">
+//                                 <img class="picture" src="${url.urls.regular}" alt="picture" />
+//                                 <span class="desc">${url.alt_description || 'no description'}</span>
+//                             </div>`;
+//             });
+//         })
+//         .catch(err => {
+//             console.error(err);
+//             imagesDOM.textContent = 'No images found, try again.';
+//         });
+// });
 
 imagesDOM.addEventListener('click', e => {
     if (e.target.classList.contains('picture')) {
