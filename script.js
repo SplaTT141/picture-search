@@ -1,5 +1,3 @@
-import { accessKey } from "./accessKey.js";
-
 const btnDOM = document.querySelector('.search');
 const imagesDOM = document.querySelector('.images');
 const showMoreBtnDOM = document.querySelector('.show-more');
@@ -9,7 +7,7 @@ let page = 0;
 function renderImages() {
     fetch(`https://api.unsplash.com/search/photos?page=${page}&per_page=6&query=${inputDOM.value}`, {
         headers: {
-            Authorization: `Client-ID ${accessKey}`
+            Authorization: `Client-ID gnJGv01qFiy98MoKeGWvxJfIHd_vcCZhl6Xk9g6pkxA`
         }
     })
         .then(res => res.json())
