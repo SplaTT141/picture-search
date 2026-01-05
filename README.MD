@@ -19,10 +19,14 @@ A simple JavaScript application that allows users to search for images using the
 - Javascript (ES6)
 - Unsplash API
 
-## ▶️ How to use
+## ▶️ Live Demo
+
+👉 **[Open the project](https://splatt141.github.io/picture-search/)**
+
+## 📖 How to use
 
 ```
-1. Click: https://splatt141.github.io/picture-search/
+1. Click 👉 https://splatt141.github.io/picture-search/
 2. Enter a search keyword
 3. Click Search
 4. Click Show more to load additional images
