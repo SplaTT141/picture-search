@@ -26,11 +26,10 @@ A simple JavaScript application that allows users to search for images using the
 ## 📖 How to use
 
 ```
-1. Click 👉 https://splatt141.github.io/picture-search/
-2. Enter a search keyword
-3. Click Search
-4. Click Show more to load additional images
-5. Click on an image to zoom in
+1. Enter a search keyword
+2. Click Search
+3. Click Show more to load additional images
+4. Click on an image to zoom in
 ```
 
 ## ✍️ Author
